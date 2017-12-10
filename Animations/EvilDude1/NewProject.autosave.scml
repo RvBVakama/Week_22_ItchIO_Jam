@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0">
+        <file id="0" name="g1106.png" width="1393" height="1592" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="g1111.png" width="1639" height="3206" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="path966.png" width="899" height="1704" pivot_x="0.605114" pivot_y="0.989537"/>
+    </folder>
+    <entity id="0" name="entity_000">
+        <obj_info name="bone_000" type="bone" w="681.205" h="10"/>
+        <obj_info name="bone_001" type="bone" w="614.385" h="10"/>
+        <obj_info name="bone_002" type="bone" w="613.029" h="10"/>
+        <obj_info name="bone_003" type="bone" w="715.587" h="10"/>
+        <animation id="0" name="NewAnimation" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <bone_ref id="0" timeline="6" key="0"/>
+                    <bone_ref id="1" parent="0" timeline="7" key="0"/>
+                    <bone_ref id="2" parent="1" timeline="8" key="0"/>
+                    <bone_ref id="3" parent="2" timeline="9" key="0"/>
+                    <object_ref id="0" timeline="5" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="4" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="0" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="1" key="0" z_index="5"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="g1106">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-443.5" y="241"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="g1111">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="2624.107143" y="401.785714"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="path966">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-7.142857" y="-628.571429"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="path966_000">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-57.142857" y="-1235.714286"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="path966_001">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-135.714286" y="-1857.142857"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="path966_002">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-292.857143" y="-2485.714286"/>
+                </key>
+            </timeline>
+            <timeline id="6" obj="0" name="bone_000" object_type="bone">
+                <key id="0" spin="0">
+                    <bone x="-85.714286" y="-660" angle="263.739423"/>
+                </key>
+            </timeline>
+            <timeline id="7" obj="1" name="bone_001" object_type="bone">
+                <key id="0" spin="0">
+                    <bone x="678.988456" y="-5.99178" angle="356.623039"/>
+                </key>
+            </timeline>
+            <timeline id="8" obj="2" name="bone_002" object_type="bone">
+                <key id="0" spin="0">
+                    <bone x="614.385374" angle="357.803893"/>
+                </key>
+            </timeline>
+            <timeline id="9" obj="3" name="bone_003" object_type="bone">
+                <key id="0" spin="0">
+                    <bone x="608.607607" y="-6.764674" angle="353.688067"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

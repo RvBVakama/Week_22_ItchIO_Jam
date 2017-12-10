@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     // Speed of the player
     public float PlayerSpeed = 0;
 
+    // Force of jump
+    public float PlayerJump = 0;
+
     // Did the player jump
     private bool Jump = false;
     private float JumpCount = 0.0f;
@@ -26,7 +29,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         // stop sliding
-        rb.velocity = Vector2.zero;
+        //rb.velocity = Vector2.zero;
 
         // movement controls
         // move left
@@ -49,7 +52,8 @@ public class Player : MonoBehaviour
         if (Jump && JumpCount < JumpTime)
         {
             // moving the player upwards (jumping)
-            rb.AddForce((Vector2.up + new Vector2(0, 1)) * PlayerSpeed, ForceMode2D.Impulse);
+            //rb.AddForce((Vector2.up + new Vector2(0, 1)) * PlayerSpeed, ForceMode2D.Impulse);
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + PlayerJump);
             // counting the jump time
             JumpCount += Time.deltaTime;
         }
