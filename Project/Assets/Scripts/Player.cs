@@ -65,14 +65,14 @@ public class Player : MonoBehaviour
         }
 
         // shift worlds
-        if (Input.GetKey(KeyCode.LeftShift))
-            Debug.Log("Change Light/Dark");
+        //if (Input.GetKey(KeyCode.LeftShift))
+            //Debug.Log("Change Light/Dark");
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
         // if colliding with ground the player can jump
-        if (col.transform.tag == "Ground")
+        if (col.transform.tag.Contains("Platform"))
             CanJump = true;
     }
 }

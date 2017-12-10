@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyZack : MonoBehaviour {
+public class EnemyZack : Enemy
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public EnemyZack() : base(2) { }
+
+    public override void EnemyStart()
+    {
+
+    }
+
+    public override void EnemyUpdate()
+    {
+        FollowObject("Player");
+    }
 }
