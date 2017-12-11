@@ -32,6 +32,10 @@ public abstract class Enemy : MonoBehaviour {
         EnemyUpdate();
 	}
 
+    public void PingPong()
+    {
+        //
+    }
 
     public void FollowObject(string targetTag)
     {

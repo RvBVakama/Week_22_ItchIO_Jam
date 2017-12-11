@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.13179916"
-     inkscape:cx="-4848.4492"
-     inkscape:cy="2541.3778"
+     inkscape:zoom="0.093196082"
+     inkscape:cx="-6284.0354"
+     inkscape:cy="-901.99248"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -381,5 +381,54 @@
          ry="4.3251319"
          transform="matrix(-0.73177898,0.68154202,0.73105116,0.68232265,0,0)" />
     </g>
+    <ellipse
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:6.66549301;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path1113"
+       cx="-1643.7788"
+       cy="735.62494"
+       rx="109.74912"
+       ry="190.66051"
+       inkscape:export-filename="D:\Projects\Repos\UNITY\Week22 Jam\Project\Assets\Sprites\Bulzabub\bulzabub.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <circle
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:10.39999962;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path1122"
+       cx="-1645.1984"
+       cy="499.98822"
+       r="95.106377"
+       inkscape:export-filename="D:\Projects\Repos\UNITY\Week22 Jam\Project\Assets\Sprites\Bulzabub\bulzabub.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <ellipse
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:10.39999962;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path1124"
+       cx="-1658.6836"
+       cy="477.98602"
+       rx="23.421719"
+       ry="27.680214"
+       inkscape:export-filename="D:\Projects\Repos\UNITY\Week22 Jam\Project\Assets\Sprites\Bulzabub\bulzabub.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <ellipse
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:10.39999962;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path1126"
+       cx="-1642.7852"
+       cy="217.99069"
+       rx="16.324228"
+       ry="22.002222"
+       transform="rotate(-8.744629)"
+       inkscape:export-filename="D:\Projects\Repos\UNITY\Week22 Jam\Project\Assets\Sprites\Bulzabub\bulzabub.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:4.98221064;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -1576.3523,537.64869 c 3.1439,9.9178 -21.8769,-5.12167 -44.4694,-0.88475 -22.5923,4.2369 -34.201,26.14575 -37.345,16.22796 -3.1439,-9.91779 12.6222,-21.39244 35.2146,-25.62935 22.5924,-4.23691 43.4559,0.36835 46.5998,10.28614 z"
+       id="path1132"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sssss"
+       inkscape:export-filename="D:\Projects\Repos\UNITY\Week22 Jam\Project\Assets\Sprites\Bulzabub\bulzabub.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
   </g>
 </svg>
