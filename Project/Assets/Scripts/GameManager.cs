@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Toggle dark mode
-		if(Input.GetKeyDown(KeyCode.LeftControl))
+		if(Input.GetKeyDown(KeyCode.DownArrow))
         {
             isDark = !isDark;
         }

@@ -8,6 +8,7 @@ TagManager:
   - PlatformWhite
   - PlatformBlack
   - Enemy
+  - Fragment
   layers:
   - Default
   - TransparentFX

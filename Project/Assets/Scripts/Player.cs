@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -19,6 +20,12 @@ public class Player : MonoBehaviour
     public float JumpTime = 0.0f;
     private bool CanJump = false;
 
+    // Number of fragments that the player has
+    private int FragmentCount = 0;
+
+    // REM Fragment count
+    public Text FragmentsText = null;
+
     // Use this for initialization
     void Start()
     {
@@ -28,8 +35,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // stop sliding
-        //rb.velocity = Vector2.zero;
+        // Updating how many fragments the player has (visually)
+        FragmentsText.text = "Fragments " + FragmentCount;
 
         // movement controls
         // move left
@@ -74,5 +81,11 @@ public class Player : MonoBehaviour
         // if colliding with ground the player can jump
         if (col.transform.tag.Contains("Platform"))
             CanJump = true;
+
+        if (col.transform.tag == "Fragment")
+        {
+            FragmentCount++;
+            Destroy(col.gameObject);
+        }
     }
 }
