@@ -11,6 +11,7 @@ public abstract class Enemy : MonoBehaviour {
 
     Rigidbody2D rb;
 
+    bool pingpongSwitch = false;
     public Enemy() { }
     public Enemy(float Speed)
     {
@@ -21,7 +22,7 @@ public abstract class Enemy : MonoBehaviour {
 	void Start () {
 
         rb = gameObject.GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0;
+        
         EnemyStart();
 	}
 	
@@ -32,9 +33,37 @@ public abstract class Enemy : MonoBehaviour {
         EnemyUpdate();
 	}
 
+    public void Gravity(float grav)
+    {
+        rb.gravityScale = grav;
+    }
+
     public void PingPong()
     {
-        //
+        List<GameObject> sensors =  new List<GameObject>();
+        foreach(Transform t in gameObject.transform)
+        {
+            if(t.tag == "Sensor")
+            {
+                sensors.Add(t.gameObject);
+            }
+            
+        }
+        foreach(GameObject s in sensors)
+        {
+            if(!Physics2D.Raycast(s.gameObject.transform.position, Vector2.down))
+            {
+                pingpongSwitch = !pingpongSwitch;
+            }
+        }
+        if(pingpongSwitch)
+        {
+            gameObject.transform.Translate(Vector2.left * Time.deltaTime * Speed);
+        }
+        else
+        {
+            gameObject.transform.Translate(Vector2.right * Time.deltaTime * Speed);
+        }
     }
 
     public void FollowObject(string targetTag)
@@ -44,7 +73,10 @@ public abstract class Enemy : MonoBehaviour {
         GameObject target = GameObject.FindGameObjectWithTag(targetTag);
         ////////////////////////////////////////////////////////////////
         //Get the direction of the current target
+        if (target == null)
+            return;
         Vector3 dir = target.transform.position - gameObject.transform.position;
+        
         //Add the force to move towards the current target
         rb.AddForce(dir * Speed);
 
@@ -55,6 +87,10 @@ public abstract class Enemy : MonoBehaviour {
         else if(xValue > -0.1f)
         {
             gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, Quaternion.Euler(0, 0, 0), 0.05f);
+        }
+        foreach(MapObject g in GameObject.FindObjectsOfType<MapObject>())
+        {
+            Physics2D.IgnoreCollision(g.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
         }
     }
 

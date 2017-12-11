@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4187982084721750}
   - component: {fileID: 212193967994048418}
   - component: {fileID: 60293125406108402}
+  - component: {fileID: 114057948472142164}
   m_Layer: 0
   m_Name: Black
   m_TagString: PlatformBlack
@@ -55,12 +56,12 @@ PolygonCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.51, y: 0.57, z: 0.53999996, w: 0.57}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 5.12, y: 2}
     newSize: {x: 5.12, y: 2}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
@@ -81,6 +82,18 @@ PolygonCollider2D:
       - {x: 2.1699998, y: -0.93}
       - {x: 2.35, y: -0.84999996}
       - {x: 2.47, y: -0.72999996}
+--- !u!114 &114057948472142164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1270967921069342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ff4799a3a60f04a82ff0fd1d8aa8f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ElementID: 2
 --- !u!212 &212193967994048418
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -117,7 +130,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 5.12, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0

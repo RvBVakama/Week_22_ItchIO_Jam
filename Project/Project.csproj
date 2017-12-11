@@ -79,8 +79,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Classes\Enemy.cs" />
-    <Compile Include="Assets\Scripts\EnemyZack.cs" />
+    <Compile Include="Assets\Scripts\Enemys\Enemy1Eye.cs" />
+    <Compile Include="Assets\Scripts\Enemys\EnemyZack.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\MapEditor\MapData.cs" />
+    <Compile Include="Assets\Scripts\MapEditor\MapManager.cs" />
+    <Compile Include="Assets\Scripts\MapEditor\MapObject.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\REMFragment.cs" />
   </ItemGroup>

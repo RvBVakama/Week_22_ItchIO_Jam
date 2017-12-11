@@ -15,6 +15,11 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        FindEverything();
+    }
+
+    public void FindEverything()
+    {
         //Get all enemys in the level
         enemy = GameObject.FindObjectsOfType<Enemy>();
         //Get all white platforms in the level
@@ -23,7 +28,7 @@ public class GameManager : MonoBehaviour {
         GameObject[] bP = GameObject.FindGameObjectsWithTag("PlatformBlack");
 
         //Add the white platforms to our list
-        foreach(GameObject w in wP)
+        foreach (GameObject w in wP)
         {
             WhitePlatforms.Add(w);
         }
@@ -41,6 +46,8 @@ public class GameManager : MonoBehaviour {
         {
             isDark = !isDark;
         }
+        if (WhitePlatforms == null || BlackPlatforms == null || enemy == null)
+            return;
         if(isDark)
         {
             //Set the camera background to black if isDark = true

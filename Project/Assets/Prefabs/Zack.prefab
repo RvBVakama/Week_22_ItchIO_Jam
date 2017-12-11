@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114199007716857914}
   - component: {fileID: 50920572128641422}
   - component: {fileID: 61754808870777286}
+  - component: {fileID: 114457283727821802}
   m_Layer: 0
   m_Name: Zack
   m_TagString: Enemy
@@ -247,7 +248,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -341,6 +342,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39769a229932c0a428ed9985c0e30021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114457283727821802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1450043372470434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ff4799a3a60f04a82ff0fd1d8aa8f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ElementID: 4
 --- !u!212 &212074661280515642
 SpriteRenderer:
   m_ObjectHideFlags: 1
