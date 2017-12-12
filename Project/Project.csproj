@@ -78,6 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BetterJump.cs" />
     <Compile Include="Assets\Scripts\Classes\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemys\Enemy1Eye.cs" />
     <Compile Include="Assets\Scripts\Enemys\EnemyZack.cs" />

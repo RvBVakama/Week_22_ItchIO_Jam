@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212807629757707364}
   - component: {fileID: 50185219955614234}
   - component: {fileID: 61669585670029894}
+  - component: {fileID: 114172082300050674}
   - component: {fileID: 114478647429995226}
   - component: {fileID: 114032259480786624}
   m_Layer: 0
@@ -100,6 +101,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ff4799a3a60f04a82ff0fd1d8aa8f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ElementID: 0
+--- !u!114 &114172082300050674
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1213682283887668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 401ec579407162348a1e17bfa18a1409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
 --- !u!114 &114478647429995226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,6 +129,7 @@ MonoBehaviour:
   PlayerSpeed: 1
   PlayerJump: 4
   JumpTime: 0.1
+  FragmentsText: {fileID: 0}
 --- !u!212 &212807629757707364
 SpriteRenderer:
   m_ObjectHideFlags: 1

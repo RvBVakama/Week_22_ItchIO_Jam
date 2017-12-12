@@ -9,6 +9,8 @@ TagManager:
   - PlatformBlack
   - Enemy
   - Fragment
+  - Sensor
+  - Killzone
   layers:
   - Default
   - TransparentFX

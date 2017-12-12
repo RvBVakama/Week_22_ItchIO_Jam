@@ -59,7 +59,6 @@ public class Player : MonoBehaviour
         if (Jump && JumpCount < JumpTime)
         {
             // moving the player upwards (jumping)
-            //rb.AddForce((Vector2.up + new Vector2(0, 1)) * PlayerSpeed, ForceMode2D.Impulse);
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + PlayerJump);
             // counting the jump time
             JumpCount += Time.deltaTime;
@@ -73,7 +72,7 @@ public class Player : MonoBehaviour
 
         // shift worlds
         //if (Input.GetKey(KeyCode.LeftShift))
-            //Debug.Log("Change Light/Dark");
+        //Debug.Log("Change Light/Dark");
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -87,5 +86,7 @@ public class Player : MonoBehaviour
             FragmentCount++;
             Destroy(col.gameObject);
         }
+        if (col.transform.tag == "Killzone")
+            Destroy(gameObject);
     }
 }
