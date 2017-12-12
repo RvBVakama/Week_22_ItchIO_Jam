@@ -38,10 +38,10 @@ GameObject:
   - component: {fileID: 4502122226491172}
   - component: {fileID: 212520613524275044}
   - component: {fileID: 95784728687016694}
-  - component: {fileID: 114199007716857914}
   - component: {fileID: 50920572128641422}
   - component: {fileID: 61754808870777286}
   - component: {fileID: 114457283727821802}
+  - component: {fileID: 114334830117544774}
   m_Layer: 0
   m_Name: Zack
   m_TagString: Enemy
@@ -186,7 +186,7 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 2
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!61 &61418216753806266
@@ -331,7 +331,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114199007716857914
+--- !u!114 &114334830117544774
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -339,7 +339,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1450043372470434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39769a229932c0a428ed9985c0e30021, type: 3}
+  m_Script: {fileID: 11500000, guid: 135fbd8be5e341d43ba9e22031581a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114457283727821802

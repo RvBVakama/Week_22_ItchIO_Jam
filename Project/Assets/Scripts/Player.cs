@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         // Updating how many fragments the player has (visually)
-        FragmentsText.text = "Fragments " + FragmentCount;
+        //FragmentsText.text = "Fragments " + FragmentCount;
 
         // movement controls
         // move left

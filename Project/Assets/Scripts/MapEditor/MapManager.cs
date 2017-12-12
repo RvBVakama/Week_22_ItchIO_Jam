@@ -40,6 +40,34 @@ public class MapManager : MonoBehaviour {
     {
         if (es.IsPointerOverGameObject())
             return;
+
+        if (togglePlay)
+        {
+            MapObject[] all = GameObject.FindObjectsOfType<MapObject>();
+            foreach (MapObject g in all)
+            {
+                if (g.GetComponent<Rigidbody2D>() == true)
+                {
+                    //g.GetComponent<Rigidbody2D>().simulated = true;
+                    Time.timeScale = 1;
+                }
+            }
+        }
+        else
+        {
+            MapObject[] all = GameObject.FindObjectsOfType<MapObject>();
+            foreach (MapObject g in all)
+            {
+                if (g.GetComponent<Rigidbody2D>() == true)
+                {
+                    //g.GetComponent<Rigidbody2D>().simulated = false;
+                    Time.timeScale = 0;
+                }
+            }
+        }
+
+        if (togglePlay)
+            return;
         if (Input.GetMouseButtonDown(0))
         {
             //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -49,32 +77,12 @@ public class MapManager : MonoBehaviour {
             obj.GetComponent<MapObject>().ElementID = mapObjectsList.value;
             
         }
-        if(togglePlay)
-        {
-            MapObject[] all = GameObject.FindObjectsOfType<MapObject>();
-            foreach (MapObject g in all)
-            {
-                if (g.GetComponent<Rigidbody2D>() == true)
-                {
-                    g.GetComponent<Rigidbody2D>().simulated = true;
-                }
-            }
-        }
-        else
-        {
-            MapObject[] all = GameObject.FindObjectsOfType<MapObject>();
-            foreach(MapObject g in all)
-            {
-                if (g.GetComponent<Rigidbody2D>() == true)
-                {
-                    g.GetComponent<Rigidbody2D>().simulated = false;
-                }
-            }
-        }
+        
     }
 
     public void TogglePlay()
     {
+   
         gm.FindEverything();
         togglePlay = !togglePlay;
     }
@@ -113,7 +121,7 @@ public class MapManager : MonoBehaviour {
 
     public void LoadMap()
     {
-        foreach(MapObject g in GameObject.FindObjectsOfType<MapObject>())
+        foreach (MapObject g in GameObject.FindObjectsOfType<MapObject>())
         {
             Destroy(g.gameObject);
         }
@@ -123,7 +131,7 @@ public class MapManager : MonoBehaviour {
         using (StreamReader sr = new StreamReader(mapDir))
         {
             string line;
-            while((line = sr.ReadLine()) != null)
+            while ((line = sr.ReadLine()) != null)
             {
                 b.Add(byte.Parse(line));
             }
@@ -140,9 +148,10 @@ public class MapManager : MonoBehaviour {
             GameObject g = (GameObject)Instantiate(mapObjects[MD.ID[i]].gameObject, new Vector2(o.x, o.y), Quaternion.identity);
             i++;
         }*/
-        for(int i = 0; i < MD.objectData.Count; i++)
+        for (int i = 0; i < MD.objectData.Count; i++)
         {
             GameObject g = (GameObject)Instantiate(mapObjects[MD.ID[i]].gameObject, new Vector2(MD.objectData[i].x, MD.objectData[i].y), Quaternion.identity);
         }
     }
+
 }
