@@ -26,7 +26,7 @@ public class MapManager : MonoBehaviour
         mapDirs = Directory.GetFiles("Levels/");
         List<Dropdown.OptionData> oData = new List<Dropdown.OptionData>();
         List<Dropdown.OptionData> mObjects = new List<Dropdown.OptionData>();
-
+        
         foreach (string d in mapDirs)
         {
             oData.Add(new Dropdown.OptionData(d));

@@ -1796,6 +1796,7 @@ MonoBehaviour:
   - {fileID: 114457283727821802, guid: a1407de6c209edf45840f754ad1f6565, type: 2}
   - {fileID: 114323011083760646, guid: 3839dc5c9395af14780ee589af9ef9f2, type: 2}
   - {fileID: 114051297888746100, guid: 431b2948118e9514c980d4e5a780e8b0, type: 2}
+  - {fileID: 114685784031656526, guid: ff361d2e68065144fb3689e1a9e21507, type: 2}
   mapDirs: []
   saveText: {fileID: 2112029310}
   mapList: {fileID: 1551144116}
