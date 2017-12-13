@@ -9,15 +9,12 @@ public class Player : MonoBehaviour
     // Getting the players rigidbody
     Rigidbody2D rb = null;
 
-    // The game manager, lots of useful things
-    public GameManager goGameManager = null;
-
     // player travel too fast in air
     float maxHorizontalSpeed = 8.0f;
 
     // Speed of the player
     public float PlayerSpeed = 0;
-
+    GameManager scpGameManager = null;
     // Force of jump
     public float PlayerJump = 0;
 
@@ -31,12 +28,30 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        // finding the GameManager because you cannot assign it to the prefab
+        if (GameObject.Find("GameManager"))
+            scpGameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector2 RayVector2 = (Vector2)transform.position - new Vector2(0.0f, 0.555f);
+
+        RaycastHit2D hit = Physics2D.Raycast(RayVector2, -Vector2.up);
+        if (hit && scpGameManager.LevelSpawn)
+        {
+            scpGameManager.isDark = true;
+            scpGameManager.LevelSpawn = false;
+        }
+        else if (!hit && scpGameManager.LevelSpawn)
+        {
+            scpGameManager.isDark = false;
+            scpGameManager.LevelSpawn = false;
+        }
+
         // stop the player moving too fast left and right
         if (rb.velocity.x > maxHorizontalSpeed)
         {
@@ -90,7 +105,6 @@ public class Player : MonoBehaviour
 
         if (col.transform.tag == "Fragment")
         {
-            GameManager scpGameManager = goGameManager;
             scpGameManager.FragmentCount++;
             Destroy(col.gameObject);
         }
@@ -98,7 +112,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Portal")
+        if (other.tag == "Portal")
         {
             //Bad code. But is for a jam. so meh.........
             MapLoader ml = GameObject.FindObjectOfType<MapLoader>();

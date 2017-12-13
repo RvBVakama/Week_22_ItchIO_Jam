@@ -6,7 +6,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class MapManager : MonoBehaviour {
+public class MapManager : MonoBehaviour
+{
 
     public GameManager gm;
     public MapObject[] mapObjects;
@@ -28,7 +29,7 @@ public class MapManager : MonoBehaviour {
         {
             oData.Add(new Dropdown.OptionData(d));
         }
-        for(int i = 0; i < mapObjects.Length; i++)
+        for (int i = 0; i < mapObjects.Length; i++)
         {
             mObjects.Add(new Dropdown.OptionData(mapObjects[i].name));
         }
@@ -72,27 +73,27 @@ public class MapManager : MonoBehaviour {
         {
             //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            
+
             GameObject obj = (GameObject)Instantiate(mapObjects[mapObjectsList.value].gameObject, pos, Quaternion.identity);
             obj.GetComponent<MapObject>().ElementID = mapObjectsList.value;
-            
+
         }
-        
+
     }
 
     public void TogglePlay()
     {
-   
+
         gm.FindEverything();
         togglePlay = !togglePlay;
     }
 
-    public void SaveAll()
+    public void SaveOverwrite()
     {
         MapData MD = new MapData();
 
         MapObject[] mapRaw = GameObject.FindObjectsOfType<MapObject>();
-        foreach(MapObject mr in mapRaw)
+        foreach (MapObject mr in mapRaw)
         {
             MD.ID.Add(mr.ElementID);
             //MD.X.Add(mr.gameObject.transform.position.x);
@@ -109,9 +110,41 @@ public class MapManager : MonoBehaviour {
 
         bf.Serialize(ms, MD);
 
-        using (StreamWriter sw = new StreamWriter("Levels/"+saveText.text+".map",true))
+        using (StreamWriter sw = new StreamWriter("Levels/" + saveText.text + ".map", true))
         {
-            foreach(byte b in ms.ToArray())
+            foreach (byte b in ms.ToArray())
+            {
+                sw.WriteLine(b);
+            }
+            sw.Close();
+        }
+    }
+
+    public void SaveAll()
+    {
+        MapData MD = new MapData();
+
+        MapObject[] mapRaw = GameObject.FindObjectsOfType<MapObject>();
+        foreach (MapObject mr in mapRaw)
+        {
+            MD.ID.Add(mr.ElementID);
+            //MD.X.Add(mr.gameObject.transform.position.x);
+            //MD.Y.Add(mr.gameObject.transform.position.y);
+            ObjectData OD = new ObjectData();
+            OD.x = mr.gameObject.transform.position.x;
+            OD.y = mr.gameObject.transform.position.y;
+            MD.objectData.Add(OD);
+            //MD.rot.Add(mr.gameObject.transform.rotation);
+        }
+
+        BinaryFormatter bf = new BinaryFormatter();
+        MemoryStream ms = new MemoryStream();
+
+        bf.Serialize(ms, MD);
+
+        using (StreamWriter sw = new StreamWriter("Levels/" + saveText.text + ".map", true))
+        {
+            foreach (byte b in ms.ToArray())
             {
                 sw.WriteLine(b);
             }

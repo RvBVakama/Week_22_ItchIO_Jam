@@ -11,11 +11,16 @@ public class GameManager : MonoBehaviour
     //A list of all the black platforms in the current level
     public List<GameObject> BlackPlatforms;
 
+    // A list of all the fragments in the current level
+    public List<GameObject> RemFragments;
+
     //A list of all enemys in the current level
     Enemy[] enemy;
 
     //Is the scene dark?
     public bool isDark = false;
+
+    public bool LevelSpawn = false;
 
     // OSTs
     public AudioClip MusicNightmare;
@@ -41,12 +46,15 @@ public class GameManager : MonoBehaviour
     {
         WhitePlatforms.Clear();
         BlackPlatforms.Clear();
+        RemFragments.Clear();
         //Get all enemys in the level
         enemy = GameObject.FindObjectsOfType<Enemy>();
         //Get all white platforms in the level
         GameObject[] wP = GameObject.FindGameObjectsWithTag("PlatformWhite");
         //Get all black platforms in the level
         GameObject[] bP = GameObject.FindGameObjectsWithTag("PlatformBlack");
+        //Get all RemFragments in the level
+        GameObject[] Fragment = GameObject.FindGameObjectsWithTag("Fragment");
 
         //Add the white platforms to our list
         foreach (GameObject w in wP)
@@ -58,6 +66,13 @@ public class GameManager : MonoBehaviour
         {
             BlackPlatforms.Add(b);
         }
+        //Add the Fragments to our list
+        foreach (GameObject f in Fragment)
+        {
+            RemFragments.Add(f);
+        }
+
+        LevelSpawn = true;
     }
 
     // Update is called once per frame
@@ -71,7 +86,7 @@ public class GameManager : MonoBehaviour
         {
             isDark = !isDark;
         }
-        if (WhitePlatforms == null || BlackPlatforms == null || enemy == null)
+        if (WhitePlatforms == null || BlackPlatforms == null || enemy == null || RemFragments == null)
             return;
         if (isDark)
         {
@@ -133,8 +148,6 @@ public class GameManager : MonoBehaviour
                 audioSource.clip = MusicNightmare;
                 audioSource.Play();
             }
-
-
 
             //If is not dark then make the camera background white
             Camera.main.backgroundColor = Color.white;
