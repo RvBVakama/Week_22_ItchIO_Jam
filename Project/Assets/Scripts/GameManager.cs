@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -79,7 +80,8 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // Updating how many fragments the player has (visually)
-        //FragmentsText.text = "Fragments " + FragmentCount;
+        if (SceneManager.GetActiveScene().name != "MapEditor")
+            FragmentsText.text = "Fragments " + FragmentCount;
 
         //Toggle dark mode
         if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -160,7 +162,7 @@ public class GameManager : MonoBehaviour
                     return;
                 }
                 else
-                { 
+                {
                     e.gameObject.SetActive(true);
                 }
             }
@@ -169,7 +171,7 @@ public class GameManager : MonoBehaviour
             {
                 if (b == null)
                 {
-                   BlackPlatforms.Clear();
+                    BlackPlatforms.Clear();
                     FindEverything();
                     return;
                 }

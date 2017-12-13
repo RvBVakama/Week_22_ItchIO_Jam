@@ -45,11 +45,13 @@ public class Player : MonoBehaviour
         {
             scpGameManager.isDark = true;
             scpGameManager.LevelSpawn = false;
+            scpGameManager.FragmentCount = 0;
         }
-        else if (!hit && scpGameManager.LevelSpawn)
+        if (!hit && scpGameManager.LevelSpawn)
         {
             scpGameManager.isDark = false;
             scpGameManager.LevelSpawn = false;
+            scpGameManager.FragmentCount = 0;
         }
 
         // stop the player moving too fast left and right

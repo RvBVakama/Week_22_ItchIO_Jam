@@ -4,8 +4,8 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
-public class MapLoader : MonoBehaviour {
-
+public class MapLoader : MonoBehaviour
+{
     public MapObject[] mapObjects;
     public string[] mapDirs;
     public int curDir = 0;
@@ -17,10 +17,17 @@ public class MapLoader : MonoBehaviour {
 
     public void NextMap()
     {
-        GameManager gm = GameObject.FindObjectOfType<GameManager>();
-        LoadMap(mapDirs[curDir]);
-        gm.FindEverything();
-        curDir++;
+        if (curDir > mapDirs.Length - 1)
+        {
+            Application.Quit();
+        }
+        else
+        {
+            GameManager gm = GameObject.FindObjectOfType<GameManager>();
+            LoadMap(mapDirs[curDir]);
+            gm.FindEverything();
+            curDir++;
+        }
     }
 
     public void LoadMap(string mapDir)

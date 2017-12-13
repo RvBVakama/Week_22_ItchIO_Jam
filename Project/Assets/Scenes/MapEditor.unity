@@ -1891,7 +1891,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1150348553}
-        m_MethodName: SaveOverwrite
+        m_MethodName: SaveAll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

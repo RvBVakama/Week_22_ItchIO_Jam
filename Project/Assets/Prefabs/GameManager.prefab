@@ -61,7 +61,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 10.37743
-  MaxDistance: 500
+  MaxDistance: 1166.1013
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -134,6 +134,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WhitePlatforms: []
   BlackPlatforms: []
+  RemFragments: []
   isDark: 1
+  LevelSpawn: 0
   MusicNightmare: {fileID: 8300000, guid: 739014727748330498d1698d38747ab6, type: 3}
   MusicSweetDreams: {fileID: 8300000, guid: 28a36dcc84d0c79458a64702c7be4f0a, type: 3}
+  FragmentCount: 0
+  FragmentsText: {fileID: 0}
