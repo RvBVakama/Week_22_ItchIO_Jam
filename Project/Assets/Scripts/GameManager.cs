@@ -2,19 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
-
+public class GameManager : MonoBehaviour
+{
     //A list of all the white platforms in the current level
     public List<GameObject> WhitePlatforms;
+
     //A list of all the black platforms in the current level
     public List<GameObject> BlackPlatforms;
+
     //A list of all enemys in the current level
     Enemy[] enemy;
+
     //Is the scene dark?
     public bool isDark = false;
 
-	// Use this for initialization
-	void Start () {
+    // OSTs
+    public AudioClip MusicNightmare;
+    public AudioClip MusicSweetDreams;
+    private AudioSource audioSource;
+
+
+    // Use this for initialization
+    void Start()
+    {
+        audioSource = gameObject.GetComponent<AudioSource>();
+
         FindEverything();
     }
 
@@ -38,18 +50,32 @@ public class GameManager : MonoBehaviour {
             BlackPlatforms.Add(b);
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         //Toggle dark mode
-		if(Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             isDark = !isDark;
         }
         if (WhitePlatforms == null || BlackPlatforms == null || enemy == null)
             return;
-        if(isDark)
+        if (isDark)
         {
+            if (!audioSource.isPlaying)
+            {
+                // Play happy funtime music
+                audioSource.clip = MusicSweetDreams;
+                audioSource.Play();
+            }
+            if (audioSource.isPlaying && audioSource.clip == MusicNightmare)
+            {
+                // Play unhappy non-funtime music
+                audioSource.Stop();
+                audioSource.clip = MusicSweetDreams;
+                audioSource.Play();
+            }
             //Set the camera background to black if isDark = true
             Camera.main.backgroundColor = Color.black;
             //Set all enemys to false
@@ -58,7 +84,7 @@ public class GameManager : MonoBehaviour {
                 e.gameObject.SetActive(false);
             }
             //Enable all black platforms    
-            foreach(GameObject b in BlackPlatforms)
+            foreach (GameObject b in BlackPlatforms)
             {
                 b.GetComponent<Collider2D>().enabled = true;
             }
@@ -68,8 +94,18 @@ public class GameManager : MonoBehaviour {
                 w.GetComponent<Collider2D>().enabled = false;
             }
         }
-        if(!isDark)
+        if (!isDark)
         {
+            if (audioSource.isPlaying && audioSource.clip == MusicSweetDreams)
+            {
+                // Play unhappy non-funtime music
+                audioSource.Stop();
+                audioSource.clip = MusicNightmare;
+                audioSource.Play();
+            }
+
+
+
             //If is not dark then make the camera background white
             Camera.main.backgroundColor = Color.white;
             //Set the enemy to true
@@ -88,5 +124,5 @@ public class GameManager : MonoBehaviour {
                 w.GetComponent<Collider2D>().enabled = true;
             }
         }
-	}
+    }
 }

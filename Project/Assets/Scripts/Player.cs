@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     // Getting the players rigidbody
     Rigidbody2D rb = null;
+
+    // players travel too fast in air
+    float maxHorizontalSpeed = 8.0f;
 
     // Speed of the player
     public float PlayerSpeed = 0;
@@ -35,6 +39,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // stop the player moving too fast left and right
+        if (rb.velocity.x > maxHorizontalSpeed)
+        {
+            Vector2 v2;
+            v2.x = maxHorizontalSpeed;
+            v2.y = rb.velocity.y;
+            rb.velocity = v2;
+        }
+
         // Updating how many fragments the player has (visually)
         //FragmentsText.text = "Fragments " + FragmentCount;
 
@@ -73,6 +86,9 @@ public class Player : MonoBehaviour
         // shift worlds
         //if (Input.GetKey(KeyCode.LeftShift))
         //Debug.Log("Change Light/Dark");
+
+        if (transform.position.y < -15.0f)
+            Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -86,7 +102,5 @@ public class Player : MonoBehaviour
             FragmentCount++;
             Destroy(col.gameObject);
         }
-        if (col.transform.tag == "Killzone")
-            Destroy(gameObject);
     }
 }

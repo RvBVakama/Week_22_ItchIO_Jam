@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4617975623808886}
   - component: {fileID: 212807629757707364}
   - component: {fileID: 50185219955614234}
-  - component: {fileID: 61669585670029894}
   - component: {fileID: 114172082300050674}
   - component: {fileID: 114478647429995226}
   - component: {fileID: 114032259480786624}
+  - component: {fileID: 61220463352276190}
   m_Layer: 0
   m_Name: bulzabub
   m_TagString: Player
@@ -65,7 +65,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &61669585670029894
+--- !u!61 &61220463352276190
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
