@@ -141,7 +141,15 @@ public class GameManager : MonoBehaviour
             //Set the enemy to true
             foreach (Enemy e in enemy)
             {
-                e.gameObject.SetActive(true);
+                if (e == null)
+                {
+                    FindEverything();
+                    return;
+                }
+                else
+                { 
+                    e.gameObject.SetActive(true);
+                }
             }
             //Disable all black platforms
             foreach (GameObject b in BlackPlatforms)
