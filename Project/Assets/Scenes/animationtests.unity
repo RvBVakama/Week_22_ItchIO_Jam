@@ -1400,6 +1400,11 @@ Prefab:
       propertyPath: MusicSweetDreams
       value: 
       objectReference: {fileID: 8300000, guid: 28a36dcc84d0c79458a64702c7be4f0a, type: 3}
+    - target: {fileID: 114701894793746304, guid: ba33502049142c74095cb2f5b2d6119b,
+        type: 2}
+      propertyPath: FragmentsText
+      value: 
+      objectReference: {fileID: 1295058013}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba33502049142c74095cb2f5b2d6119b, type: 2}
   m_IsPrefabParent: 0
@@ -1420,7 +1425,7 @@ GameObject:
   - component: {fileID: 787857582}
   - component: {fileID: 787857581}
   m_Layer: 0
-  m_Name: REMFragment2
+  m_Name: REMFragmentType2
   m_TagString: Fragment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1561,6 +1566,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1685810046766126, guid: ba33502049142c74095cb2f5b2d6119b,
     type: 2}
   m_PrefabInternal: {fileID: 694593257}
+--- !u!114 &980372120 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114701894793746304, guid: ba33502049142c74095cb2f5b2d6119b,
+    type: 2}
+  m_PrefabInternal: {fileID: 694593257}
+  m_Script: {fileID: 11500000, guid: b403977f91043384da2e0e3227bc2f89, type: 3}
 --- !u!82 &980372122
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1908,7 +1919,7 @@ GameObject:
   - component: {fileID: 1193852758}
   - component: {fileID: 1193852757}
   m_Layer: 0
-  m_Name: REMFragment1
+  m_Name: REMFragmentType1
   m_TagString: Fragment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2023,11 +2034,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4617975623808886, guid: 1077d67ccc3d65740933ceb613be3700, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6.96
+      value: -2.72
       objectReference: {fileID: 0}
     - target: {fileID: 4617975623808886, guid: 1077d67ccc3d65740933ceb613be3700, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.2
+      value: 2.82
       objectReference: {fileID: 0}
     - target: {fileID: 4617975623808886, guid: 1077d67ccc3d65740933ceb613be3700, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2063,6 +2074,16 @@ Prefab:
       propertyPath: JumpVelocity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 61220463352276190, guid: 1077d67ccc3d65740933ceb613be3700,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114478647429995226, guid: 1077d67ccc3d65740933ceb613be3700,
+        type: 2}
+      propertyPath: goGameManager
+      value: 
+      objectReference: {fileID: 980372120}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1077d67ccc3d65740933ceb613be3700, type: 2}
   m_IsPrefabParent: 0

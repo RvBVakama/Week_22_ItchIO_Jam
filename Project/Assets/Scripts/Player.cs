@@ -9,7 +9,10 @@ public class Player : MonoBehaviour
     // Getting the players rigidbody
     Rigidbody2D rb = null;
 
-    // players travel too fast in air
+    // The game manager, lots of useful things
+    public GameManager goGameManager = null;
+
+    // player travel too fast in air
     float maxHorizontalSpeed = 8.0f;
 
     // Speed of the player
@@ -24,11 +27,6 @@ public class Player : MonoBehaviour
     public float JumpTime = 0.0f;
     private bool CanJump = false;
 
-    // Number of fragments that the player has
-    private int FragmentCount = 0;
-
-    // REM Fragment count
-    public Text FragmentsText = null;
 
     // Use this for initialization
     void Start()
@@ -47,9 +45,6 @@ public class Player : MonoBehaviour
             v2.y = rb.velocity.y;
             rb.velocity = v2;
         }
-
-        // Updating how many fragments the player has (visually)
-        //FragmentsText.text = "Fragments " + FragmentCount;
 
         // movement controls
         // move left
@@ -83,10 +78,6 @@ public class Player : MonoBehaviour
             JumpCount = 0.0f;
         }
 
-        // shift worlds
-        //if (Input.GetKey(KeyCode.LeftShift))
-        //Debug.Log("Change Light/Dark");
-
         if (transform.position.y < -15.0f)
             Destroy(gameObject);
     }
@@ -99,7 +90,8 @@ public class Player : MonoBehaviour
 
         if (col.transform.tag == "Fragment")
         {
-            FragmentCount++;
+            GameManager scpGameManager = goGameManager;
+            scpGameManager.FragmentCount++;
             Destroy(col.gameObject);
         }
     }

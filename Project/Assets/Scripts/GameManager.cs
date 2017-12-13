@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -21,6 +22,12 @@ public class GameManager : MonoBehaviour
     public AudioClip MusicSweetDreams;
     private AudioSource audioSource;
 
+    // Number of fragments that the player has
+    [HideInInspector]
+    public int FragmentCount = 0;
+
+    // REM Fragment count
+    public Text FragmentsText = null;
 
     // Use this for initialization
     void Start()
@@ -56,6 +63,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Updating how many fragments the player has (visually)
+        FragmentsText.text = "Fragments " + FragmentCount;
+
         //Toggle dark mode
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
