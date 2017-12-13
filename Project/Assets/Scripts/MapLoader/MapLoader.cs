@@ -8,10 +8,19 @@ public class MapLoader : MonoBehaviour {
 
     public MapObject[] mapObjects;
     public string[] mapDirs;
-    public int curDir;
+    public int curDir = 0;
     public void Start()
     {
         mapDirs = Directory.GetFiles("Levels/");
+        NextMap();
+    }
+
+    public void NextMap()
+    {
+        GameManager gm = GameObject.FindObjectOfType<GameManager>();
+        LoadMap(mapDirs[curDir]);
+        gm.FindEverything();
+        curDir++;
     }
 
     public void LoadMap(string mapDir)

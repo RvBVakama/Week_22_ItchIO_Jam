@@ -103,4 +103,14 @@ public class Player : MonoBehaviour
             Destroy(col.gameObject);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Portal")
+        {
+            //Bad code. But is for a jam. so meh.........
+            MapLoader ml = GameObject.FindObjectOfType<MapLoader>();
+            ml.NextMap();
+        }
+    }
 }

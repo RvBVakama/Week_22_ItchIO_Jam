@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
 
     public void FindEverything()
     {
+        WhitePlatforms.Clear();
+        BlackPlatforms.Clear();
         //Get all enemys in the level
         enemy = GameObject.FindObjectsOfType<Enemy>();
         //Get all white platforms in the level
@@ -83,15 +85,33 @@ public class GameManager : MonoBehaviour
             {
                 e.gameObject.SetActive(false);
             }
-            //Enable all black platforms    
+            //Enable all black platforms  
             foreach (GameObject b in BlackPlatforms)
             {
-                b.GetComponent<Collider2D>().enabled = true;
+                if (b == null)
+                {
+                    BlackPlatforms.Clear();
+                    FindEverything();
+                    return;
+                }
+                else
+                {
+                    b.GetComponent<Collider2D>().enabled = true;
+                }
             }
             //Disable all white platforms
             foreach (GameObject w in WhitePlatforms)
             {
-                w.GetComponent<Collider2D>().enabled = false;
+                if (w == null)
+                {
+                    WhitePlatforms.Clear();
+                    FindEverything();
+                    return;
+                }
+                else
+                {
+                    w.GetComponent<Collider2D>().enabled = false;
+                }
             }
         }
         if (!isDark)
@@ -116,12 +136,30 @@ public class GameManager : MonoBehaviour
             //Disable all black platforms
             foreach (GameObject b in BlackPlatforms)
             {
-                b.GetComponent<Collider2D>().enabled = false;
+                if (b == null)
+                {
+                   BlackPlatforms.Clear();
+                    FindEverything();
+                    return;
+                }
+                else
+                {
+                    b.GetComponent<Collider2D>().enabled = false;
+                }
             }
             //Enable all white platforms
             foreach (GameObject w in WhitePlatforms)
             {
-                w.GetComponent<Collider2D>().enabled = true;
+                if (w == null)
+                {
+                    WhitePlatforms.Clear();
+                    FindEverything();
+                    return;
+                }
+                else
+                {
+                    w.GetComponent<Collider2D>().enabled = true;
+                }
             }
         }
     }
