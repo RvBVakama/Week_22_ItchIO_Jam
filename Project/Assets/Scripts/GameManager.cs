@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // Updating how many fragments the player has (visually)
-        FragmentsText.text = "Fragments " + FragmentCount;
+        //FragmentsText.text = "Fragments " + FragmentCount;
 
         //Toggle dark mode
         if (Input.GetKeyDown(KeyCode.DownArrow))
