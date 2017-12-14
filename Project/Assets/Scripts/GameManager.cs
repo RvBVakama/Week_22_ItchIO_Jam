@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         WhitePlatforms.Clear();
         BlackPlatforms.Clear();
         RemFragments.Clear();
-
+        //enemy.Clear();
         //Get all enemys in the level
         //enemy = GameObject.FindObjectsOfType<Enemy>();
         //Get all white platforms in the level
@@ -78,8 +78,6 @@ public class GameManager : MonoBehaviour
         {
             RemFragments.Add(f);
         }
-
-        LevelSpawn = true;
     }
 
     // Update is called once per frame

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class Enemy : MonoBehaviour {
 
@@ -12,12 +12,12 @@ public abstract class Enemy : MonoBehaviour {
     Rigidbody2D rb;
     GameManager gm;
     bool pingpongSwitch = false;
-
+    MapManager mm;
     private void Awake()
     {
         gm = GameObject.FindObjectOfType<GameManager>();
         gm.RegisterEnemy(this);
-  
+        
     }
 
     public Enemy() { }
@@ -28,9 +28,12 @@ public abstract class Enemy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
         rb = gameObject.GetComponent<Rigidbody2D>();
-        
+        if(SceneManager.GetActiveScene().name == "MapEditor")
+        {
+            mm = GameObject.FindObjectOfType<MapManager>();
+            mm.forSaveObjects.Add(gameObject.GetComponent<MapObject>());
+        }
         EnemyStart();
 	}
 	
@@ -38,6 +41,12 @@ public abstract class Enemy : MonoBehaviour {
 	void Update () {
         if (Freeze)
             return;
+        if(gm.isDark)
+        {
+            gm.enemy.Clear();
+            gameObject.SetActive(false);
+            gm.enemy.Add(gameObject.GetComponent<Enemy>());
+        }
         EnemyUpdate();
 	}
 

@@ -40,9 +40,15 @@ public class MapLoader : MonoBehaviour
 
     public void LoadMap(string mapDir)
     {
+        gm.LevelSpawn = false;
+
         foreach (MapObject g in GameObject.FindObjectsOfType<MapObject>())
         {
             Destroy(g.gameObject);
+        }
+        foreach(Enemy e in gm.enemy)
+        {
+            Destroy(e.gameObject);
         }
 
         List<byte> b = new List<byte>();
@@ -64,6 +70,9 @@ public class MapLoader : MonoBehaviour
         {
             GameObject g = (GameObject)Instantiate(mapObjects[MD.ID[i]].gameObject, new Vector2(MD.objectData[i].x, MD.objectData[i].y), Quaternion.identity);
         }
+        gm.LevelSpawn = true;
         gm.FindEverything();
+        Time.timeScale = 1;
+       
     }
 }

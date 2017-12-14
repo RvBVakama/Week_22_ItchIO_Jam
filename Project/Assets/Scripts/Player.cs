@@ -35,6 +35,21 @@ public class Player : MonoBehaviour
 
         ml = GameObject.FindObjectOfType<MapLoader>();
         rb = GetComponent<Rigidbody2D>();
+
+        foreach (GameObject o in scpGameManager.WhitePlatforms)
+        {
+            if (Vector2.Distance(gameObject.transform.position, o.transform.position) < 3)
+            {
+                scpGameManager.isDark = false;
+            }
+        }
+        foreach (GameObject o in scpGameManager.BlackPlatforms)
+        {
+            if (Vector2.Distance(gameObject.transform.position, o.transform.position) < 3)
+            {
+                scpGameManager.isDark = true;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -43,18 +58,40 @@ public class Player : MonoBehaviour
         Vector2 RayVector2 = (Vector2)transform.position - new Vector2(0.0f, 0.555f);
 
         RaycastHit2D hit = Physics2D.Raycast(RayVector2, gameObject.transform.up * -1);
-        if (hit && scpGameManager.LevelSpawn)
+        //Debug.Log(scpGameManager.LevelSpawn);
+        Debug.Log(hit);
+        /*if (!scpGameManager.isDark && hit.collider && scpGameManager.LevelSpawn)
         {
-            scpGameManager.isDark = true;
-            scpGameManager.LevelSpawn = false;
-            scpGameManager.FragmentCount = 0;
-        }
-        if (!hit && scpGameManager.LevelSpawn)
-        {
+            Debug.Log("found platform");
             scpGameManager.isDark = false;
             scpGameManager.LevelSpawn = false;
             scpGameManager.FragmentCount = 0;
+
         }
+        if (!scpGameManager.isDark && hit.collider && scpGameManager.LevelSpawn)
+        {
+            Debug.Log("found platform");
+            scpGameManager.isDark = true;
+            scpGameManager.LevelSpawn = false;
+            scpGameManager.FragmentCount = 0;
+
+        }
+        if (scpGameManager.isDark && hit.collider && scpGameManager.LevelSpawn)
+        {
+            Debug.Log("found platform");
+            scpGameManager.isDark = false;
+            scpGameManager.LevelSpawn = false;
+            scpGameManager.FragmentCount = 0;
+
+        }
+        if (scpGameManager.isDark && hit.collider && scpGameManager.LevelSpawn)
+        {
+            Debug.Log("found platform");
+            scpGameManager.isDark = true;
+            scpGameManager.LevelSpawn = false;
+            scpGameManager.FragmentCount = 0;
+
+        }*/
 
         // stop the player moving too fast left and right
         if (rb.velocity.x > maxHorizontalSpeed)

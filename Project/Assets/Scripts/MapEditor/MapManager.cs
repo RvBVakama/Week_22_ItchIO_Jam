@@ -18,7 +18,7 @@ public class MapManager : MonoBehaviour
     public bool togglePlay = false;
     public float CameraMoveSpeed;
     EventSystem es;
-
+    public List<MapObject> forSaveObjects = new List<MapObject>();
     private void Start()
     {
         Time.timeScale = 0;
@@ -118,9 +118,13 @@ public class MapManager : MonoBehaviour
     public void SaveAll()
     {
         MapData MD = new MapData();
-
-        MapObject[] mapRaw = GameObject.FindObjectsOfType<MapObject>();
-        foreach (MapObject mr in mapRaw)
+        foreach(MapObject mo in GameObject.FindObjectsOfType<MapObject>())
+        {
+            forSaveObjects.Add(mo);
+        }
+        
+        //MapObject[] mapRaw = GameObject.FindObjectsOfType<MapObject>();
+        foreach (MapObject mr in forSaveObjects)
         {
             MD.ID.Add(mr.ElementID);
             //MD.X.Add(mr.gameObject.transform.position.x);
