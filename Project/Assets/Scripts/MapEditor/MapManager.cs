@@ -18,6 +18,7 @@ public class MapManager : MonoBehaviour
     public bool togglePlay = false;
     public float CameraMoveSpeed;
     EventSystem es;
+    public Canvas canvas;
     public List<MapObject> forSaveObjects = new List<MapObject>();
     private void Start()
     {
