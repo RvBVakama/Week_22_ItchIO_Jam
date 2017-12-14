@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class MapLoader : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class MapLoader : MonoBehaviour
     {
         if (curDir > mapDirs.Length - 1)
         {
-            Application.Quit();
+            SceneManager.LoadScene("Credits");
         }
         else
         {
@@ -57,7 +58,7 @@ public class MapLoader : MonoBehaviour
         {
 
         }
-        foreach(Enemy e in gm.enemy)
+        foreach (Enemy e in gm.enemy)
         {
             if (e == null)
             {
@@ -92,6 +93,6 @@ public class MapLoader : MonoBehaviour
         gm.LevelSpawn = true;
         gm.FindEverything();
         Time.timeScale = 1;
-       
+
     }
 }

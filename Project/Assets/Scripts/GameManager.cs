@@ -83,6 +83,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // back to menu if hit esc
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+
         // Updating how many fragments the player has (visually)
         if (SceneManager.GetActiveScene().name != "MapEditor")
             FragmentsText.text = "Fragments: " + FragmentCount + "/" + RemFragments.Count;
