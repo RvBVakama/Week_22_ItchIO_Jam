@@ -150,10 +150,12 @@ public class MapManager : MonoBehaviour
             sw.Close();
         }
         ms.Close();
+        forSaveObjects.Clear();
     }
 
     public void LoadMap()
     {
+        forSaveObjects.Clear();
         foreach (MapObject g in GameObject.FindObjectsOfType<MapObject>())
         {
             Destroy(g.gameObject);

@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     // REM Fragment count
     public Text FragmentsText = null;
-
+    //public Text mapName = null;
     // Use this for initialization
     void Start()
     {

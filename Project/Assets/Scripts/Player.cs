@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
 
         ml = GameObject.FindObjectOfType<MapLoader>();
         rb = GetComponent<Rigidbody2D>();
+        scpGameManager.LevelSpawn = true;
     }
 
     // Update is called once per frame

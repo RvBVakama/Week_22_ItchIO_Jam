@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class MapLoader : MonoBehaviour
 {
     public MapObject[] mapObjects;
@@ -11,6 +11,7 @@ public class MapLoader : MonoBehaviour
     public int curDir = 0;
     string curMapString;
     GameManager gm;
+    public Text mapName;
     public void Start()
     {
         mapDirs = Directory.GetFiles("Levels/");
@@ -42,15 +43,33 @@ public class MapLoader : MonoBehaviour
     {
         gm.LevelSpawn = false;
 
-        foreach (MapObject g in GameObject.FindObjectsOfType<MapObject>())
+        string name = mapDir.Split('/')[1].Split('.')[0];
+        mapName.text = name;
+
+        try
         {
-            Destroy(g.gameObject);
+            foreach (MapObject g in GameObject.FindObjectsOfType<MapObject>())
+            {
+                Destroy(g.gameObject);
+            }
+        }
+        catch
+        {
+
         }
         foreach(Enemy e in gm.enemy)
         {
-            Destroy(e.gameObject);
+            if (e == null)
+            {
+                //RestartMap();
+                continue;
+            }
+            else
+            {
+                Destroy(e.gameObject);
+            }
         }
-
+        gm.enemy.Clear();
         List<byte> b = new List<byte>();
         using (StreamReader sr = new StreamReader(mapDir))
         {
