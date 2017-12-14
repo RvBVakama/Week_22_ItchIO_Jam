@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212722209473834134}
   - component: {fileID: 60176915811608406}
   - component: {fileID: 114712077468369406}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: White
   m_TagString: PlatformWhite
   m_Icon: {fileID: 0}
@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ElementID: 1
+  StartTransform: {fileID: 0}
 --- !u!212 &212722209473834134
 SpriteRenderer:
   m_ObjectHideFlags: 1
