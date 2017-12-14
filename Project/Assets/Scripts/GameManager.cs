@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> RemFragments;
 
     //A list of all enemys in the current level
-    Enemy[] enemy;
+    public List<Enemy> enemy;
 
     //Is the scene dark?
     public bool isDark = false;
@@ -43,13 +43,19 @@ public class GameManager : MonoBehaviour
         FindEverything();
     }
 
+    public void RegisterEnemy(Enemy obj)
+    {
+        enemy.Add(obj);
+    }
+
     public void FindEverything()
     {
         WhitePlatforms.Clear();
         BlackPlatforms.Clear();
         RemFragments.Clear();
+
         //Get all enemys in the level
-        enemy = GameObject.FindObjectsOfType<Enemy>();
+        //enemy = GameObject.FindObjectsOfType<Enemy>();
         //Get all white platforms in the level
         GameObject[] wP = GameObject.FindGameObjectsWithTag("PlatformWhite");
         //Get all black platforms in the level
@@ -110,7 +116,15 @@ public class GameManager : MonoBehaviour
             //Set all enemys to false
             foreach (Enemy e in enemy)
             {
-                e.gameObject.SetActive(false);
+                if (e == null)
+                {
+                    FindEverything();
+                    return;
+                }
+                else
+                {
+                    e.gameObject.SetActive(false);
+                }
             }
             //Enable all black platforms  
             foreach (GameObject b in BlackPlatforms)

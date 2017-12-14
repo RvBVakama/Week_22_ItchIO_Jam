@@ -10,8 +10,16 @@ public abstract class Enemy : MonoBehaviour {
     public bool Freeze { get; set; }
 
     Rigidbody2D rb;
-
+    GameManager gm;
     bool pingpongSwitch = false;
+
+    private void Awake()
+    {
+        gm = GameObject.FindObjectOfType<GameManager>();
+        gm.RegisterEnemy(this);
+  
+    }
+
     public Enemy() { }
     public Enemy(float Speed)
     {

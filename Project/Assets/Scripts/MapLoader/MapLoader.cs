@@ -22,6 +22,7 @@ public class MapLoader : MonoBehaviour
         LoadMap(curMapString);
     }
 
+
     public void NextMap()
     {
         if (curDir > mapDirs.Length - 1)

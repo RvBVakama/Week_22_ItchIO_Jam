@@ -114,6 +114,10 @@ public class Player : MonoBehaviour
             scpGameManager.FragmentCount++;
             Destroy(col.gameObject);
         }
+        if (col.gameObject.GetComponent<Enemy>() != null)
+        {
+            ml.RestartMap();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -127,9 +131,6 @@ public class Player : MonoBehaviour
                 ml.NextMap();
             }
         }
-        if (other.GetComponent<Enemy>() != null)
-        {
-            ml.RestartMap();
-        }
+        
     }
 }
