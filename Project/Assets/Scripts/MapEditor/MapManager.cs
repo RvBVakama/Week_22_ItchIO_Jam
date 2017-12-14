@@ -15,6 +15,7 @@ public class MapManager : MonoBehaviour
     public Dropdown mapList;
     public Dropdown mapObjectsList;
     public bool togglePlay = false;
+    public float CameraMoveSpeed;
     EventSystem es;
 
     private void Start()
@@ -39,11 +40,30 @@ public class MapManager : MonoBehaviour
         mapList.AddOptions(oData);
     }
 
+    private void FixedUpdate()
+    {
+        /*if (Input.GetKey(KeyCode.UpArrow))
+        {
+            Camera.main.gameObject.transform.Translate(Vector2.up * CameraMoveSpeed);
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            Camera.main.gameObject.transform.Translate(Vector2.down * CameraMoveSpeed);
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            Camera.main.gameObject.transform.Translate(Vector2.left * CameraMoveSpeed);
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            Camera.main.gameObject.transform.Translate(Vector2.right * CameraMoveSpeed);
+        }*/
+    }
+
     private void Update()
     {
         if (es.IsPointerOverGameObject())
             return;
-
         if (togglePlay)
         {
             MapObject[] all = GameObject.FindObjectsOfType<MapObject>();
@@ -52,9 +72,10 @@ public class MapManager : MonoBehaviour
                 if (g.GetComponent<Rigidbody2D>() == true)
                 {
                     //g.GetComponent<Rigidbody2D>().simulated = true;
-                    Time.timeScale = 1;
+                    
                 }
             }
+            Time.timeScale = 1;
         }
         else
         {
@@ -63,10 +84,13 @@ public class MapManager : MonoBehaviour
             {
                 if (g.GetComponent<Rigidbody2D>() == true)
                 {
+                    g.gameObject.transform.position = g.StartTransform.position;
                     //g.GetComponent<Rigidbody2D>().simulated = false;
-                    Time.timeScale = 0;
+                    
                 }
+               
             }
+            Time.timeScale = 0;
         }
 
         if (togglePlay)
@@ -158,6 +182,7 @@ public class MapManager : MonoBehaviour
         for (int i = 0; i < MD.objectData.Count; i++)
         {
             GameObject g = (GameObject)Instantiate(mapObjects[MD.ID[i]].gameObject, new Vector2(MD.objectData[i].x, MD.objectData[i].y), Quaternion.identity);
+            g.GetComponent<MapObject>().ElementID = MD.ID[i];
         }
         ms.Close();
     }

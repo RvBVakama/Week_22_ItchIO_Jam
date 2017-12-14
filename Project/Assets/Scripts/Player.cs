@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     // Speed of the player
     public float PlayerSpeed = 0;
     GameManager scpGameManager = null;
+    MapLoader ml;
     // Force of jump
     public float PlayerJump = 0;
 
@@ -32,6 +33,7 @@ public class Player : MonoBehaviour
         if (GameObject.Find("GameManager"))
             scpGameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
+        ml = GameObject.FindObjectOfType<MapLoader>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -40,7 +42,7 @@ public class Player : MonoBehaviour
     {
         Vector2 RayVector2 = (Vector2)transform.position - new Vector2(0.0f, 0.555f);
 
-        RaycastHit2D hit = Physics2D.Raycast(RayVector2, -Vector2.up);
+        RaycastHit2D hit = Physics2D.Raycast(RayVector2, gameObject.transform.up * -1);
         if (hit && scpGameManager.LevelSpawn)
         {
             scpGameManager.isDark = true;
@@ -96,7 +98,9 @@ public class Player : MonoBehaviour
         }
 
         if (transform.position.y < -15.0f)
-            Destroy(gameObject);
+        {
+            ml.RestartMap();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -116,9 +120,16 @@ public class Player : MonoBehaviour
     {
         if (other.tag == "Portal")
         {
-            //Bad code. But is for a jam. so meh.........
-            MapLoader ml = GameObject.FindObjectOfType<MapLoader>();
-            ml.NextMap();
+            if (scpGameManager.FragmentCount == scpGameManager.RemFragments.Count)
+            {
+                //Bad code. But is for a jam. so meh.........
+                MapLoader ml = GameObject.FindObjectOfType<MapLoader>();
+                ml.NextMap();
+            }
+        }
+        if (other.GetComponent<Enemy>() != null)
+        {
+            ml.RestartMap();
         }
     }
 }

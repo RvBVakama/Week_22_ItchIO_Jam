@@ -90,10 +90,13 @@ public abstract class Enemy : MonoBehaviour {
         }
         foreach(MapObject g in GameObject.FindObjectsOfType<MapObject>())
         {
-            Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), g.GetComponent<Collider2D>(), true);
-            foreach (Transform t in gameObject.transform)
+            if (g.gameObject.GetComponent<Player>() == null)
             {
-                Physics2D.IgnoreCollision(t.gameObject.GetComponent<Collider2D>(), g.GetComponent<Collider2D>(), true);
+                Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), g.GetComponent<Collider2D>(), true);
+                foreach (Transform t in gameObject.transform)
+                {
+                    Physics2D.IgnoreCollision(t.gameObject.GetComponent<Collider2D>(), g.GetComponent<Collider2D>(), true);
+                }
             }
         }
     }

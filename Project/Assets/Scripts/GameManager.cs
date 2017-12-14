@@ -81,10 +81,10 @@ public class GameManager : MonoBehaviour
     {
         // Updating how many fragments the player has (visually)
         if (SceneManager.GetActiveScene().name != "MapEditor")
-            FragmentsText.text = "Fragments " + FragmentCount;
+            FragmentsText.text = "Fragments: " + FragmentCount + "/" + RemFragments.Count;
 
         //Toggle dark mode
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             isDark = !isDark;
         }

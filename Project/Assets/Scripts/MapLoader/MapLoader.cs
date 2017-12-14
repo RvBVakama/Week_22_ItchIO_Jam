@@ -9,10 +9,17 @@ public class MapLoader : MonoBehaviour
     public MapObject[] mapObjects;
     public string[] mapDirs;
     public int curDir = 0;
+    string curMapString;
+    GameManager gm;
     public void Start()
     {
         mapDirs = Directory.GetFiles("Levels/");
         NextMap();
+    }
+
+    public void RestartMap()
+    {
+        LoadMap(curMapString);
     }
 
     public void NextMap()
@@ -23,9 +30,9 @@ public class MapLoader : MonoBehaviour
         }
         else
         {
-            GameManager gm = GameObject.FindObjectOfType<GameManager>();
+            gm = GameObject.FindObjectOfType<GameManager>();
+            curMapString = mapDirs[curDir];
             LoadMap(mapDirs[curDir]);
-            gm.FindEverything();
             curDir++;
         }
     }
@@ -56,5 +63,6 @@ public class MapLoader : MonoBehaviour
         {
             GameObject g = (GameObject)Instantiate(mapObjects[MD.ID[i]].gameObject, new Vector2(MD.objectData[i].x, MD.objectData[i].y), Quaternion.identity);
         }
+        gm.FindEverything();
     }
 }

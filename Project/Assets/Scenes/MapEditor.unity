@@ -1802,6 +1802,7 @@ MonoBehaviour:
   mapList: {fileID: 1551144116}
   mapObjectsList: {fileID: 86351803}
   togglePlay: 0
+  CameraMoveSpeed: 1
 --- !u!4 &1150348554
 Transform:
   m_ObjectHideFlags: 0
