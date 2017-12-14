@@ -11,7 +11,7 @@ public class MapManager : MonoBehaviour
 {
     public GameManager gm;
     public MapObject[] mapObjects;
-    public string[] mapDirs;
+    public List<string> mapDirs;
     public InputField saveText;
     public Dropdown mapList;
     public Dropdown mapObjectsList;
@@ -26,7 +26,10 @@ public class MapManager : MonoBehaviour
 
         es = GameObject.FindObjectOfType<EventSystem>();
         gm = GameObject.FindObjectOfType<GameManager>();
-        mapDirs = Directory.GetFiles("Levels/");
+        foreach (string s in Directory.GetFiles("Levels/"))
+        {
+            mapDirs.Add(s);
+        }
         List<Dropdown.OptionData> oData = new List<Dropdown.OptionData>();
         List<Dropdown.OptionData> mObjects = new List<Dropdown.OptionData>();
 
@@ -152,6 +155,16 @@ public class MapManager : MonoBehaviour
         }
         ms.Close();
         forSaveObjects.Clear();
+        mapDirs.Add("Levels/" + saveText.text + ".map");
+
+        List<Dropdown.OptionData> oData = new List<Dropdown.OptionData>();
+        
+
+        foreach (string d in mapDirs)
+        {
+            oData.Add(new Dropdown.OptionData(d));
+        }
+        mapList.AddOptions(oData);
     }
 
     public void LoadMap()
