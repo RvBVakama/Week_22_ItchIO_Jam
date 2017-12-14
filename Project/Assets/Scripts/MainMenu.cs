@@ -23,6 +23,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("MapLoader");
     }
 
+    public void PlayMapEditor()
+    {
+        SceneManager.LoadScene("MapEditor");
+    }
+
     public void PlayCredits()
     {
         SceneManager.LoadScene("Credits");

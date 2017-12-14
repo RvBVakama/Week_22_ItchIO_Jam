@@ -12,5 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MapLoader.unity
     guid: 11d29bc2d1c01d54583a05687d57b0e8
   - enabled: 1
+    path: Assets/Scenes/MapEditor.unity
+    guid: 34683aa40256c1c4fb2ecf5481b3599a
+  - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 7d9696190824a814080b579df0929ee5

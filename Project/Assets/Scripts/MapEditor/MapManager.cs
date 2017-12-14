@@ -5,6 +5,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class MapManager : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class MapManager : MonoBehaviour
         mapDirs = Directory.GetFiles("Levels/");
         List<Dropdown.OptionData> oData = new List<Dropdown.OptionData>();
         List<Dropdown.OptionData> mObjects = new List<Dropdown.OptionData>();
-        
+
         foreach (string d in mapDirs)
         {
             oData.Add(new Dropdown.OptionData(d));
@@ -72,7 +73,7 @@ public class MapManager : MonoBehaviour
                 if (g.GetComponent<Rigidbody2D>() == true)
                 {
                     //g.GetComponent<Rigidbody2D>().simulated = true;
-                    
+
                 }
             }
             Time.timeScale = 1;
@@ -86,9 +87,9 @@ public class MapManager : MonoBehaviour
                 {
                     g.gameObject.transform.position = g.StartTransform.position;
                     //g.GetComponent<Rigidbody2D>().simulated = false;
-                    
+
                 }
-               
+
             }
             Time.timeScale = 0;
         }
@@ -104,6 +105,8 @@ public class MapManager : MonoBehaviour
             obj.GetComponent<MapObject>().ElementID = mapObjectsList.value;
         }
     }
+
+    public void BackToMainMenu(){SceneManager.LoadScene("MainMenu");}
 
     public void TogglePlay()
     {
@@ -152,7 +155,7 @@ public class MapManager : MonoBehaviour
             Destroy(g.gameObject);
         }
         string mapDir = mapList.captionText.text;
-       
+
         string name = mapDir.Split('/')[1].Split('.')[0];
         //string[] name2 = name[1].Split('.');
         string normName = name;
