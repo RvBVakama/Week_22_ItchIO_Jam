@@ -59,7 +59,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 3
   m_AngularDrag: 3
-  m_GravityScale: 10
+  m_GravityScale: 6
   m_Material: {fileID: 0}
   m_Interpolate: 2
   m_SleepingMode: 1
@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ElementID: 0
+  StartTransform: {fileID: 0}
 --- !u!114 &114172082300050674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,10 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20788482bede5ce4e9b81b92318dab8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHorizontalSpeed: 6
   PlayerSpeed: 1
-  PlayerJump: 4
+  PlayerJump: 3
   JumpTime: 0.1
-  FragmentsText: {fileID: 0}
 --- !u!212 &212807629757707364
 SpriteRenderer:
   m_ObjectHideFlags: 1

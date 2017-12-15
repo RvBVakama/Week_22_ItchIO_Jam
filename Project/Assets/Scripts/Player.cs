@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rb = null;
 
     // player travel too fast in air
-    float maxHorizontalSpeed = 8.0f;
+    public float maxHorizontalSpeed = 8.0f;
 
     // Speed of the player
     public float PlayerSpeed = 0;
@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     private float JumpCount = 0.0f;
     public float JumpTime = 0.0f;
     private bool CanJump = false;
+    bool inair = false;
+    bool collidingwithground = false;
 
     // Use this for initialization
     void Start()
@@ -80,14 +82,30 @@ public class Player : MonoBehaviour
                 scpGameManager.FragmentCount = 0;
             }
         }
+        Debug.Log(inair + " is inair");
+        // stop x velocity if not inteding
+        if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) || inair && !collidingwithground)
+        {
+            Vector2 v2;
+            Vector2 v2x;
+            float vx = Mathf.Lerp(rb.velocity.x, 0.0f, Time.deltaTime*5);
+            inair = true;
+            v2x.x = vx;
+            v2.x = v2x.x;
+            v2.y = rb.velocity.y;
+            rb.velocity = v2;
+
+            if (rb.velocity.x > 0.5f)
+                inair = false;
+        }
 
         // stop the player moving too fast left and right
         if (rb.velocity.x > maxHorizontalSpeed)
         {
-            Vector2 v2;
-            v2.x = maxHorizontalSpeed;
-            v2.y = rb.velocity.y;
-            rb.velocity = v2;
+            Vector2 vv2;
+            vv2.x = maxHorizontalSpeed;
+            vv2.y = rb.velocity.y;
+            rb.velocity = vv2;
         }
 
         // movement controls
@@ -132,7 +150,10 @@ public class Player : MonoBehaviour
     {
         // if colliding with ground the player can jump
         if (col.transform.tag.Contains("Platform"))
+        {
+            collidingwithground = true;
             CanJump = true;
+        }
 
         if (col.transform.tag == "Fragment")
         {
